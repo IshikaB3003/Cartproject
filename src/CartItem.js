@@ -16,7 +16,26 @@ class CartItem extends React.Component{
     //arrow fns used to make sure this isn't undefined when called thru another obj
     //another method that we could have used was bind()
     increaseQuantity = () => {
-        console.log('this', this.state);
+        //below code will change qty but react doesn't know it has to re-load the page
+        // this.state.qty += 1;
+        // console.log('this', this.state);
+        //SET STATE FORM 1
+        //use this when prev value isn't req
+        //like to change title
+        // this.setState({
+        //     qty: this.state.qty + 1
+        //     //shallow merge i.e rest prop of ob aren't vhanged
+        //     //also react itself re-renders the component
+        // });
+        
+        //SET STATE FORM 2
+        //using a function
+        //use this when prev value is req
+        this.setState((prevState) => {
+            return{
+                qty: prevState.qty + 1
+            }
+        });
     }
 
     render(){
