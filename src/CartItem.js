@@ -20,6 +20,10 @@ class CartItem extends React.Component{
         // this.state.qty += 1;
         // console.log('this', this.state);
         //SET STATE FORM 1
+
+        //read about batching in setState
+        //basically if u copy code thrice to add qty, it will be all ignored until the last call
+
         //use this when prev value isn't req
         //like to change title
         // this.setState({
@@ -34,6 +38,37 @@ class CartItem extends React.Component{
         this.setState((prevState) => {
             return{
                 qty: prevState.qty + 1
+            }
+        }, () => {
+            console.log('this.state', this.state);
+            //callback - can be used in setstate form 1 as well
+        });
+
+        // this.setState((prevState) => {
+        //     return{
+        //         qty: prevState.qty + 1
+        //     }
+        // });
+
+        // this.setState((prevState) => {
+        //     return{
+        //         qty: prevState.qty + 1
+        //     }
+        // });
+
+        //here the qty will inc by 3 as a prevState is being maintained
+        //but react will re-render this only once
+
+    }
+
+    decreaseQuantity = () => {
+        const {qty} = this.state;
+        if(qty===0){
+            return;
+        }
+        this.setState((prevState) => {
+            return{
+                qty: prevState.qty - 1
             }
         });
     }
@@ -61,7 +96,7 @@ class CartItem extends React.Component{
                         alt="decrease" 
                         className="action-icons" 
                         src="https://cdn-icons-png.flaticon.com/128/992/992683.png"
-                        
+                        onClick={this.decreaseQuantity}
                         />
                         <img 
                         alt="delete" 
