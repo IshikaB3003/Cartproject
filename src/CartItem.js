@@ -13,6 +13,28 @@ class CartItem extends React.Component{
 
         }
         
+
+        testing(){
+            const promise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve('done');
+                }, 5000);
+            })
+
+            promise.then(() => {
+                //setState acts like a sync call
+                // this.setState({qty: 100});
+                this.setState({qty: this.state.qty + 10});
+                this.setState({qty: this.state.qty + 10});
+                this.setState({qty: this.state.qty + 10});
+                console.log('state', this.state);
+            });
+
+        }
+
+
+
+
     //arrow fns used to make sure this isn't undefined when called thru another obj
     //another method that we could have used was bind()
     increaseQuantity = () => {
@@ -42,6 +64,7 @@ class CartItem extends React.Component{
         }, () => {
             console.log('this.state', this.state);
             //callback - can be used in setstate form 1 as well
+            //setState is asynchronous calls
         });
 
         // this.setState((prevState) => {
