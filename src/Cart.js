@@ -30,6 +30,29 @@ import CartItem from './CartItem';
                     }
         
                 }
+    handleIncreaseQuantity = (product) => {
+        console.log('Heyy please inc the quantity of ', product);
+        const {products} =this.state;
+        const index=products.indexOf(product);
+
+        products[index].qty+=1;
+        this.setState({
+            products: products
+        })
+    }         
+
+    handleDecreaseQuantity = (product) => {
+        console.log('Heyy please dec the quantity of ', product);
+        const {products} =this.state;
+        const index=products.indexOf(product);
+
+        products[index].qty-=1;
+        this.setState({
+            products: products
+        })
+    } 
+
+
     render(){
         const { products } = this.state;
         // const arr=[1, 2, 3, 4, 5];
@@ -49,6 +72,8 @@ import CartItem from './CartItem';
                     <CartItem 
                         product={product} 
                         key={product.id}
+                        onIncreaseQuantity={this.handleIncreaseQuantity}
+                        onDecreaseQuantity={this.handleDecreaseQuantity}
                     />
                     )
                 })}
