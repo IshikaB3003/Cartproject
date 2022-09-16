@@ -141,15 +141,15 @@ const CartItem = (props) => {
     // }
 }
 
-//we can't apply css on jsx so we'll make an object
-//110 mei px isn't req, jsx adds its itself
-const styles = {
-    image: {
-        height: 110,
-        width: 110,
-        borderRadius: 4,
-        background: '#ccc'
-    }
-}
+        //we can't apply css on jsx so we'll make an object
+        //110 mei px isn't req, jsx adds its itself
+        const styles = {
+            image: {
+                height: 110,
+                width: 110,
+                borderRadius: 4,
+                background: '#ccc'
+            }
+        }
 
-export default CartItem;
+        export default CartItem;
