@@ -1,8 +1,8 @@
 import React from 'react';
 import CartItem from './CartItem';
 
-    class Cart extends React.Component{
-        constructor(){
+    const Cart = (props) => {
+        /*constructor(){
                     //super used because parent ka constructor also needs to be called first
                     super();
                     this.state = {
@@ -63,10 +63,10 @@ import CartItem from './CartItem';
         this.setState({
             products: items
         })
-    }
+    }*/
 
-    render(){
-        const { products } = this.state;
+    // render(){
+        const { products } = props;
         // const arr=[1, 2, 3, 4, 5];
         return(
             <div className="cart">
@@ -84,15 +84,15 @@ import CartItem from './CartItem';
                     <CartItem 
                         product={product} 
                         key={product.id}
-                        onIncreaseQuantity={this.handleIncreaseQuantity}
-                        onDecreaseQuantity={this.handleDecreaseQuantity}
-                        onDeleteProduct={this.handleDeleteProduct}
+                        onIncreaseQuantity={props.onIncreaseQuantity}
+                        onDecreaseQuantity={props.onDecreaseQuantity}
+                        onDeleteProduct={props.onDeleteProduct}
                     />
                     )
                 })}
             </div>
         );
-    }
+    // }
     }
 
 
